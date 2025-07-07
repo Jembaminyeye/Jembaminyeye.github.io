@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChatBot ANID</title>
+
+  <!-- Estilos del widget Dialogflow -->
+  <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
+  <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff; 
+      font-family: Arial, sans-serif;
+    }
+
+    df-messenger {
+      z-index: 999;
+      position: fixed;
+      --df-messenger-font-color: #000;
+      --df-messenger-font-family: 'Google Sans', sans-serif;
+      --df-messenger-chat-background: #f3f6fc;
+      --df-messenger-message-user-background: #d3e3fd;
+      --df-messenger-message-bot-background: #ffffff;
+      bottom: 16px;
+      right: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Chatbot de ANID -->
+  <df-messenger
+    location="us-central1"
+    project-id="chatbot-anid"
+    agent-id="8ef491f4-c62b-49e9-a1c1-ef3bbb43c970"
+    language-code="es"
+    max-query-length="-1">
+    <df-messenger-chat-bubble chat-title="ChatBot ANID">
+    </df-messenger-chat-bubble>
+  </df-messenger>
+
+</body>
+</html>
