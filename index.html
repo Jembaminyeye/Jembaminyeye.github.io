@@ -14,6 +14,7 @@
       font-family: 'Google Sans', sans-serif;
       background-color: #ACBEF2; /* Color de fondo de la página */
       display: flex;
+      flex-direction: column; /* Organiza los elementos en columna */
       justify-content: center;
       align-items: center;
       min-height: 100vh; /* Asegura que ocupe al menos el 100% de la altura de la ventana */
@@ -22,8 +23,8 @@
       box-sizing: border-box; /* Incluye padding en el tamaño total */
     }
 
-    .intro-box {
-      background-color: #fff; /* Fondo blanco para el cuadro de introducción */
+    .content-box {
+      background-color: #fff; /* Fondo blanco para los cuadros de contenido */
       padding: 40px; /* Espaciado interno del cuadro */
       border-radius: 12px; /* Bordes redondeados */
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
@@ -31,28 +32,32 @@
       text-align: center;
       line-height: 1.6;
       color: #333;
+      margin-bottom: 20px; /* Espacio entre los cuadros */
     }
 
-    .intro-box h1 {
+    .content-box h1, .content-box h2 {
       color: #333;
       margin-bottom: 20px;
       font-size: 2em;
     }
 
-    .intro-box p {
+    .content-box p {
       margin-bottom: 15px;
       font-size: 1.1em;
     }
 
-    .intro-box .instructions {
-      margin-top: 25px;
-      padding-top: 20px;
-      border-top: 1px solid #eee;
-      font-size: 1em;
-      color: #555;
+    .content-box .instructions ul {
+      list-style-type: none; /* Quita viñetas por defecto */
+      padding: 0;
     }
 
-    .intro-box .instructions strong {
+    .content-box .instructions li {
+      margin-bottom: 8px;
+      text-align: left; /* Alinea el texto de la lista a la izquierda */
+      font-size: 1em;
+    }
+    
+    .content-box .instructions strong {
       color: #000;
     }
 
@@ -71,7 +76,7 @@
 </head>
 <body>
 
-  <div class="intro-box">
+  <div class="content-box">
     <h1>¡Bienvenidos a nuestro Chatbot ANID!</h1>
     <p>Este chatbot ha sido diseñado para **mejorar el acceso a la información** sobre **becas y concursos de postgrado** ofrecidos por la Agencia Nacional de Investigación y Desarrollo (ANID), facilitando una experiencia interactiva y accesible para todos los usuarios.</p>
     
@@ -89,6 +94,66 @@
       <p>¡Esperamos que te sea de gran utilidad!</p>
     </div>
   </div>
+
+  <div class="content-box">
+    <h2>Guía de Interacción con el Chatbot ANID</h2>
+    <p><strong>Objetivo:</strong> Evaluar la capacidad del chatbot para guiarte a través de consultas sobre becas y concursos de ANID, desde un saludo inicial hasta información específica.</p>
+    <p><strong>Instrucciones:</strong> Por favor, interactúa con el chatbot siguiendo los pasos a continuación. Escribe tus preguntas en el campo de texto y presiona Enter o el botón de enviar. Presta atención a las respuestas del chatbot y cómo te guía.</p>
+
+    <h3>Fase 1: Inicio y Exploración General de Becas</h3>
+    <ol>
+      <li>
+        <p><strong>Saluda al chatbot:</strong></p>
+        <ul>
+          <li><strong>Acción:</strong> Si no lo has hecho, presiona el círculo flotante en la parte inferior derecha para abrir el chatbot.</li>
+          <li><strong>Escribe:</strong> `Hola` (o `Buenos días`, `Buenas tardes`).</li>
+          <li><strong>Espera:</strong> La respuesta de bienvenida del chatbot.</li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>Pregunta sobre las becas disponibles:</strong></p>
+        <ul>
+          <li><strong>Escribe:</strong> `Qué becas hay?` (o `Qué becas ofrece ANID?`, `Dime sobre las becas`).</li>
+          <li><strong>Observa:</strong> Cómo el chatbot te guía a la sección de becas y qué tipo de información o menú te presenta a continuación.</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h3>Fase 2: Consulta Específica sobre Renovación de Becas</h3>
+    <ol start="3"> <li>
+        <p><strong>Pregunta sobre la renovación de becas:</strong></p>
+        <ul>
+          <li><strong>Escribe:</strong> `Cómo renuevo mi beca?` (o `Requisitos para renovar beca`, `Renovación becas`).</li>
+          <li><strong>Revisa:</strong> La información o las indicaciones que te proporciona el chatbot sobre este tema específico.</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h3>Fase 3: Interacciones Comunes y Despedida</h3>
+    <ol start="4"> <li>
+        <p><strong>Agradece al chatbot:</strong></p>
+        <ul>
+          <li><strong>Escribe:</strong> `Gracias` (o `Muchas gracias`, `Te lo agradezco`).</li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>Indica que no tienes más preguntas:</strong></p>
+        <ul>
+          <li><strong>Escribe:</strong> `No tengo más preguntas` (o `Eso es todo`, `Terminé`).</li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>Despídete del chatbot:</strong></p>
+        <ul>
+          <li><strong>Escribe:</strong> `Adiós` (o `Hasta luego`, `Chao`).</li>
+        </ul>
+      </li>
+    </ol>
+
+    <p style="margin-top: 30px; font-weight: bold;">
+      UNA VEZ FINALIZADA ESTA INTERACCIÓN, POR FAVOR, VUELVE A LA ENCUESTA PARA COMPLETARLA.
+    </p>
+  </div>
   
   <df-messenger
     location="us-central1"
@@ -96,8 +161,10 @@
     agent-id="8ef491f4-c62b-49e9-a1c1-ef3bbb43c970"
     language-code="es"
     max-query-length="-1"
-    initial-text="Escribe 'Hola' o 'Becas' para empezar."> <df-messenger-chat-bubble
-      chat-title="ChatBot ANID"> </df-messenger-chat-bubble>
+    initial-text="Escribe 'Hola' para empezar, o 'Becas' para buscar información.">
+    <df-messenger-chat-bubble
+      chat-title="ChatBot ANID">
+    </df-messenger-chat-bubble>
   </df-messenger>
 
 </body>
