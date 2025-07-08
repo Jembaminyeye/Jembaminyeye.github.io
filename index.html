@@ -14,7 +14,7 @@
   <style>
     body {
       font-family: 'Open Sans', sans-serif; /* Fuente principal para el cuerpo */
-      background-color: #ACBEF2; /* Color de fondo de la página */
+      background-color: #ACBEF2; /* Color de fondo de la página - NO CAMBIADO */
       display: flex;
       flex-direction: column; /* Organiza los elementos en columna */
       justify-content: center;
@@ -38,28 +38,24 @@
       box-sizing: border-box;
     }
 
-    .content-box h1, .content-box h2, .content-box h3 {
+    /* Ajustes específicos para los títulos dentro de content-box */
+    .content-box h2, .content-box h3 {
       font-family: 'Montserrat', sans-serif; /* Fuente para los títulos */
       color: #2a2a2a; /* Color más oscuro para los títulos */
       margin-bottom: 15px; /* Espaciado inferior para títulos */
       line-height: 1.2;
     }
 
-    .content-box h1 {
-      font-size: 2.5em; /* Título principal más grande */
-      margin-bottom: 25px;
-    }
-
     .content-box h2 {
-      font-size: 2em; /* Subtítulos un poco más grandes */
-      margin-top: 30px; /* Espacio superior para separar secciones */
-      margin-bottom: 20px;
+      font-size: 2.2em; /* Título principal del cuadro */
+      margin-top: 0; /* Aseguramos que no haya margen superior indeseado */
+      margin-bottom: 25px;
     }
 
     .content-box h3 {
       font-size: 1.4em; /* Subtítulos de sección */
-      margin-top: 25px;
-      margin-bottom: 15px;
+      margin-top: 35px; /* Más espacio superior para separar fases */
+      margin-bottom: 18px;
       color: #444;
     }
 
@@ -108,17 +104,20 @@
     }
     
     .content-box ol li {
-      margin-bottom: 15px; /* Más espacio entre elementos de lista numerada */
+      margin-bottom: 18px; /* Más espacio entre elementos de lista numerada */
       font-size: 1.05em;
       line-height: 1.4;
       border-bottom: 1px dashed #eee; /* Línea discontinua para separar los pasos */
-      padding-bottom: 15px;
+      padding-bottom: 18px;
     }
 
     .content-box ol li:last-child {
       border-bottom: none; /* No hay línea en el último elemento */
+      margin-bottom: 0;
+      padding-bottom: 0;
     }
 
+    /* Estilos para df-messenger */
     df-messenger {
       z-index: 999;
       position: fixed;
@@ -135,32 +134,11 @@
 <body>
 
   <div class="content-box">
-    <h1>¡Bienvenidos a nuestro Chatbot ANID!</h1>
-    <p>Este chatbot ha sido diseñado para <strong>mejorar el acceso a la información</strong> sobre <strong>becas y concursos de postgrado</strong> ofrecidos por la Agencia Nacional de Investigación y Desarrollo (ANID), facilitando una experiencia interactiva y accesible para todos los usuarios.</p>
-    
-    <div class="instructions">
-      <p>Para empezar a usar el chatbot y resolver tus dudas, es muy sencillo:</p>
-      <ul>
-        <li>Presiona el <strong>círculo flotante</strong> que encontrarás en la parte inferior derecha de esta pantalla.</li>
-        <li>Una vez abierto, puedes iniciar la conversación con un saludo. Prueba a escribir:</li>
-        <ul>
-          <li>"Buenos días"</li>
-          <li>"Hola"</li>
-          <li>"Qué es ANID?"</li>
-          <li>"Becas"</li>
-          <li>"Fondos"</li>
-        </ul>
-      </ul>
-      <p>¡Esperamos que te sea de gran utilidad!</p>
-    </div>
-  </div>
-
-  <div class="content-box">
-    <h2>Guía de Interacción con el Chatbot ANID</h2>
+    <h2>¡Bienvenidos a nuestro Chatbot ANID!</h2>
     <p><strong>Objetivo:</strong> Evaluar la capacidad del chatbot para guiarte a través de consultas sobre becas y concursos de ANID, desde un saludo inicial hasta información específica.</p>
     <p><strong>Instrucciones:</strong> Por favor, interactúa con el chatbot siguiendo los pasos a continuación. Escribe tus preguntas en el campo de texto y presiona Enter o el botón de enviar. Presta atención a las respuestas del chatbot y cómo te guía.</p>
 
-    <h3>Fase 1: Inicio y Exploración General de Becas</h3>
+    <h3>Exploración General de Becas</h3>
     <ol>
       <li>
         <p><strong>Saluda al chatbot:</strong></p>
@@ -173,14 +151,15 @@
       <li>
         <p><strong>Pregunta sobre las becas disponibles:</strong></p>
         <ul>
-          <li><strong>Escribe:</strong> `Qué becas hay?` (o `Qué becas ofrece ANID?`, `Dime sobre las becas`).</li>
+          <li><strong>Escribe:</strong> `Qué becas hay?` (o `Qué becas ofrece ANID?`).</li>
           <li><strong>Observa:</strong> Cómo el chatbot te guía a la sección de becas y qué tipo de información o menú te presenta a continuación.</li>
         </ul>
       </li>
     </ol>
 
-    <h3>Fase 2: Consulta Específica sobre Renovación de Becas</h3>
-    <ol start="3"> <li>
+    <h3>Consulta Específica sobre Renovación de Becas</h3>
+    <ol start="3"> 
+      <li>
         <p><strong>Pregunta sobre la renovación de becas:</strong></p>
         <ul>
           <li><strong>Escribe:</strong> `Cómo renuevo mi beca?` (o `Requisitos para renovar beca`, `Renovación becas`).</li>
@@ -189,19 +168,8 @@
       </li>
     </ol>
 
-    <h3>Fase 3: Interacciones Comunes y Despedida</h3>
-    <ol start="4"> <li>
-        <p><strong>Agradece al chatbot:</strong></p>
-        <ul>
-          <li><strong>Escribe:</strong> `Gracias` (o `Muchas gracias`, `Te lo agradezco`).</li>
-        </ul>
-      </li>
-      <li>
-        <p><strong>Indica que no tienes más preguntas:</strong></p>
-        <ul>
-          <li><strong>Escribe:</strong> `No tengo más preguntas` (o `Eso es todo`, `Terminé`).</li>
-        </ul>
-      </li>
+    <h3>Despedida</h3>
+    <ol start="4"> 
       <li>
         <p><strong>Despídete del chatbot:</strong></p>
         <ul>
