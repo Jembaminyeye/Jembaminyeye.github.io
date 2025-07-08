@@ -10,15 +10,60 @@
   <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
 
   <style>
+    body {
+      font-family: 'Google Sans', sans-serif;
+      background-color: #ACBEF2; /* Color de fondo de la página */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh; /* Asegura que ocupe al menos el 100% de la altura de la ventana */
+      margin: 0;
+      padding: 20px; /* Espaciado general para evitar que el contenido toque los bordes */
+      box-sizing: border-box; /* Incluye padding en el tamaño total */
+    }
+
+    .intro-box {
+      background-color: #fff; /* Fondo blanco para el cuadro de introducción */
+      padding: 40px; /* Espaciado interno del cuadro */
+      border-radius: 12px; /* Bordes redondeados */
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+      max-width: 800px; /* Ancho máximo del cuadro */
+      text-align: center;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .intro-box h1 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+
+    .intro-box p {
+      margin-bottom: 15px;
+      font-size: 1.1em;
+    }
+
+    .intro-box .instructions {
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+      font-size: 1em;
+      color: #555;
+    }
+
+    .intro-box .instructions strong {
+      color: #000;
+    }
+
     df-messenger {
       z-index: 999; /* Asegura que el chatbot esté sobre otros elementos de la página */
       position: fixed; /* Mantiene el chatbot fijo en la pantalla */
-      /* Variables de estilo para personalizar la apariencia del chat */
       --df-messenger-font-color: #000;
-      --df-messenger-font-family: Google Sans, sans-serif; /* Fuente personalizada */
-      --df-messenger-chat-background: #f3f6fc; /* Color de fondo del chat */
-      --df-messenger-message-user-background: #d3e3fd; /* Color de fondo de los mensajes del usuario */
-      --df-messenger-message-bot-background: #fff; /* Color de fondo de los mensajes del bot */
+      --df-messenger-font-family: 'Google Sans', sans-serif;
+      --df-messenger-chat-background: #f3f6fc;
+      --df-messenger-message-user-background: #d3e3fd;
+      --df-messenger-message-bot-background: #fff;
       bottom: 16px; /* Posición desde la parte inferior */
       right: 16px; /* Posición desde la derecha */
     }
@@ -26,8 +71,24 @@
 </head>
 <body>
 
-  <h1>Bienvenido al sitio de información de ANID</h1>
-  <p>Explora nuestras becas y concursos utilizando el chatbot ubicado en la esquina inferior derecha.</p>
+  <div class="intro-box">
+    <h1>¡Bienvenidos a nuestro Chatbot ANID!</h1>
+    <p>Este chatbot ha sido diseñado para **mejorar el acceso a la información** sobre **becas y concursos de postgrado** ofrecidos por la Agencia Nacional de Investigación y Desarrollo (ANID), facilitando una experiencia interactiva y accesible para todos los usuarios.</p>
+    
+    <div class="instructions">
+      <p>Para empezar a usar el chatbot y resolver tus dudas, es muy sencillo:</p>
+      <p>1.  Presiona el **círculo flotante** que encontrarás en la parte inferior derecha de esta pantalla.</p>
+      <p>2.  Una vez abierto, puedes iniciar la conversación con un saludo. Prueba a escribir:</p>
+      <ul>
+        <li>"Buenos días"</li>
+        <li>"Hola"</li>
+        <li>"Qué es ANID?"</li>
+        <li>"Becas"</li>
+        <li>"Fondos"</li>
+      </ul>
+      <p>¡Esperamos que te sea de gran utilidad!</p>
+    </div>
+  </div>
   
   <df-messenger
     location="us-central1"
@@ -35,7 +96,7 @@
     agent-id="8ef491f4-c62b-49e9-a1c1-ef3bbb43c970"
     language-code="es"
     max-query-length="-1"
-    initial-text="Escribe 'Hola' para empezar, o 'Becas' para buscar información."> <df-messenger-chat-bubble
+    initial-text="Escribe 'Hola' o 'Becas' para empezar."> <df-messenger-chat-bubble
       chat-title="ChatBot ANID"> </df-messenger-chat-bubble>
   </df-messenger>
 
