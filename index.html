@@ -1,46 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ChatBot ANID</title>
-
-  <!-- Estilos del widget Dialogflow -->
+  
   <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
+  
   <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
 
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #ffffff; 
-      font-family: Arial, sans-serif;
-    }
-
     df-messenger {
-      z-index: 999;
-      position: fixed;
+      z-index: 999; /* Asegura que el chatbot esté sobre otros elementos de la página */
+      position: fixed; /* Mantiene el chatbot fijo en la pantalla */
+      /* Variables de estilo para personalizar la apariencia del chat */
       --df-messenger-font-color: #000;
-      --df-messenger-font-family: 'Google Sans', sans-serif;
-      --df-messenger-chat-background: #f3f6fc;
-      --df-messenger-message-user-background: #d3e3fd;
-      --df-messenger-message-bot-background: #ffffff;
-      bottom: 16px;
-      right: 16px;
+      --df-messenger-font-family: Google Sans, sans-serif; /* Fuente personalizada */
+      --df-messenger-chat-background: #f3f6fc; /* Color de fondo del chat */
+      --df-messenger-message-user-background: #d3e3fd; /* Color de fondo de los mensajes del usuario */
+      --df-messenger-message-bot-background: #fff; /* Color de fondo de los mensajes del bot */
+      bottom: 16px; /* Posición desde la parte inferior */
+      right: 16px; /* Posición desde la derecha */
     }
   </style>
 </head>
 <body>
 
-  <!-- Chatbot de ANID -->
+  <h1>Bienvenido al sitio de información de ANID</h1>
+  <p>Explora nuestras becas y concursos utilizando el chatbot ubicado en la esquina inferior derecha.</p>
+  
   <df-messenger
     location="us-central1"
     project-id="chatbot-anid"
     agent-id="8ef491f4-c62b-49e9-a1c1-ef3bbb43c970"
     language-code="es"
-    max-query-length="-1">
-    <df-messenger-chat-bubble chat-title="ChatBot ANID">
-    </df-messenger-chat-bubble>
+    max-query-length="-1"
+    initial-text="Escribe 'Hola' para empezar, o 'Becas' para buscar información."> <df-messenger-chat-bubble
+      chat-title="ChatBot ANID"> </df-messenger-chat-bubble>
   </df-messenger>
 
 </body>
