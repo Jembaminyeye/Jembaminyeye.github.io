@@ -9,9 +9,11 @@
   
   <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
 
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
     body {
-      font-family: 'Google Sans', sans-serif;
+      font-family: 'Open Sans', sans-serif; /* Fuente principal para el cuerpo */
       background-color: #ACBEF2; /* Color de fondo de la página */
       display: flex;
       flex-direction: column; /* Organiza los elementos en columna */
@@ -19,58 +21,114 @@
       align-items: center;
       min-height: 100vh; /* Asegura que ocupe al menos el 100% de la altura de la ventana */
       margin: 0;
-      padding: 20px; /* Espaciado general para evitar que el contenido toque los bordes */
+      padding: 30px 20px; /* Espaciado general y superior/inferior para evitar que el contenido toque los bordes */
       box-sizing: border-box; /* Incluye padding en el tamaño total */
+      color: #333; /* Color de texto base */
     }
 
     .content-box {
       background-color: #fff; /* Fondo blanco para los cuadros de contenido */
-      padding: 40px; /* Espaciado interno del cuadro */
+      padding: 40px 50px; /* Espaciado interno del cuadro (más ancho en los lados) */
       border-radius: 12px; /* Bordes redondeados */
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
-      max-width: 800px; /* Ancho máximo del cuadro */
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada y suave */
+      max-width: 850px; /* Ancho máximo del cuadro un poco más grande */
       text-align: center;
-      line-height: 1.6;
-      color: #333;
-      margin-bottom: 20px; /* Espacio entre los cuadros */
+      line-height: 1.6; /* Mayor interlineado para mejor legibilidad */
+      margin-bottom: 25px; /* Espacio entre los cuadros */
+      box-sizing: border-box;
     }
 
-    .content-box h1, .content-box h2 {
-      color: #333;
+    .content-box h1, .content-box h2, .content-box h3 {
+      font-family: 'Montserrat', sans-serif; /* Fuente para los títulos */
+      color: #2a2a2a; /* Color más oscuro para los títulos */
+      margin-bottom: 15px; /* Espaciado inferior para títulos */
+      line-height: 1.2;
+    }
+
+    .content-box h1 {
+      font-size: 2.5em; /* Título principal más grande */
+      margin-bottom: 25px;
+    }
+
+    .content-box h2 {
+      font-size: 2em; /* Subtítulos un poco más grandes */
+      margin-top: 30px; /* Espacio superior para separar secciones */
       margin-bottom: 20px;
-      font-size: 2em;
+    }
+
+    .content-box h3 {
+      font-size: 1.4em; /* Subtítulos de sección */
+      margin-top: 25px;
+      margin-bottom: 15px;
+      color: #444;
     }
 
     .content-box p {
       margin-bottom: 15px;
-      font-size: 1.1em;
+      font-size: 1.1em; /* Texto del párrafo un poco más grande */
+      color: #4a4a4a;
     }
 
-    .content-box .instructions ul {
-      list-style-type: none; /* Quita viñetas por defecto */
-      padding: 0;
-    }
-
-    .content-box .instructions li {
-      margin-bottom: 8px;
-      text-align: left; /* Alinea el texto de la lista a la izquierda */
+    .content-box .instructions {
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px solid #eee; /* Línea separadora sutil */
       font-size: 1em;
+      color: #555;
     }
-    
+
     .content-box .instructions strong {
       color: #000;
+      font-weight: 600; /* Hace las negritas más fuertes */
+    }
+
+    /* Estilos para listas dentro de los cuadros de contenido */
+    .content-box ul, .content-box ol {
+      list-style-type: none; /* Quita viñetas por defecto */
+      padding: 0;
+      margin: 20px auto; /* Centra la lista */
+      max-width: 90%; /* Limita el ancho de las listas */
+      text-align: left; /* Alinea el texto de la lista a la izquierda */
+    }
+
+    .content-box ul li {
+      margin-bottom: 10px;
+      padding-left: 25px; /* Espacio para la viñeta personalizada */
+      position: relative;
+      font-size: 1.05em;
+    }
+
+    .content-box ul li::before {
+      content: '•'; /* Viñeta de círculo personalizado */
+      color: #ACBEF2; /* Color de la viñeta, a juego con el fondo de la página */
+      font-size: 1.2em;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    
+    .content-box ol li {
+      margin-bottom: 15px; /* Más espacio entre elementos de lista numerada */
+      font-size: 1.05em;
+      line-height: 1.4;
+      border-bottom: 1px dashed #eee; /* Línea discontinua para separar los pasos */
+      padding-bottom: 15px;
+    }
+
+    .content-box ol li:last-child {
+      border-bottom: none; /* No hay línea en el último elemento */
     }
 
     df-messenger {
-      z-index: 999; /* Asegura que el chatbot esté sobre otros elementos de la página */
-      position: fixed; /* Mantiene el chatbot fijo en la pantalla */
+      z-index: 999;
+      position: fixed;
       --df-messenger-font-color: #000;
-      --df-messenger-font-family: 'Google Sans', sans-serif;
-      --df-messenger-chat-background: #f3f6fc;
-      --df-messenger-message-user-background: #d3e3fd;
+      --df-messenger-font-family: 'Open Sans', sans-serif; /* Usamos la misma fuente para el chatbot */
+      --df-messenger-chat-background: #f8fbfc; /* Un blanco roto para el chat */
+      --df-messenger-message-user-background: #e0ecfb; /* Un azul más suave para el usuario */
       --df-messenger-message-bot-background: #fff;
-      bottom: 16px; /* Posición desde la parte inferior */
-      right: 16px; /* Posición desde la derecha */
+      bottom: 20px; /* Un poco más arriba del borde */
+      right: 20px; /* Un poco más a la izquierda del borde */
     }
   </style>
 </head>
@@ -78,18 +136,20 @@
 
   <div class="content-box">
     <h1>¡Bienvenidos a nuestro Chatbot ANID!</h1>
-    <p>Este chatbot ha sido diseñado para **mejorar el acceso a la información** sobre **becas y concursos de postgrado** ofrecidos por la Agencia Nacional de Investigación y Desarrollo (ANID), facilitando una experiencia interactiva y accesible para todos los usuarios.</p>
+    <p>Este chatbot ha sido diseñado para <strong>mejorar el acceso a la información</strong> sobre <strong>becas y concursos de postgrado</strong> ofrecidos por la Agencia Nacional de Investigación y Desarrollo (ANID), facilitando una experiencia interactiva y accesible para todos los usuarios.</p>
     
     <div class="instructions">
       <p>Para empezar a usar el chatbot y resolver tus dudas, es muy sencillo:</p>
-      <p>1.  Presiona el **círculo flotante** que encontrarás en la parte inferior derecha de esta pantalla.</p>
-      <p>2.  Una vez abierto, puedes iniciar la conversación con un saludo. Prueba a escribir:</p>
       <ul>
-        <li>"Buenos días"</li>
-        <li>"Hola"</li>
-        <li>"Qué es ANID?"</li>
-        <li>"Becas"</li>
-        <li>"Fondos"</li>
+        <li>Presiona el <strong>círculo flotante</strong> que encontrarás en la parte inferior derecha de esta pantalla.</li>
+        <li>Una vez abierto, puedes iniciar la conversación con un saludo. Prueba a escribir:</li>
+        <ul>
+          <li>"Buenos días"</li>
+          <li>"Hola"</li>
+          <li>"Qué es ANID?"</li>
+          <li>"Becas"</li>
+          <li>"Fondos"</li>
+        </ul>
       </ul>
       <p>¡Esperamos que te sea de gran utilidad!</p>
     </div>
@@ -105,7 +165,7 @@
       <li>
         <p><strong>Saluda al chatbot:</strong></p>
         <ul>
-          <li><strong>Acción:</strong> Si no lo has hecho, presiona el círculo flotante en la parte inferior derecha para abrir el chatbot.</li>
+          <li><strong>Acción:</strong> Si no lo has hecho, presiona el círculo con el ícono de chat en la parte inferior derecha para abrir el chatbot.</li>
           <li><strong>Escribe:</strong> `Hola` (o `Buenos días`, `Buenas tardes`).</li>
           <li><strong>Espera:</strong> La respuesta de bienvenida del chatbot.</li>
         </ul>
